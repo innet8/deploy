@@ -1,0 +1,21 @@
+general: {
+	json = "indented"				# Whether the JSON messages should be indented (default),
+	base_path = "/janus"			# Base path to bind to in the web server (plain HTTP only)
+	http = true						# Whether to enable the plain HTTP interface
+	port = 7901						# Web server HTTP port
+	ip = "0.0.0.0"
+	https = false					# Whether to enable HTTPS (default=false)
+}
+admin: {
+	admin_base_path = "/admin"			# Base path to bind to in the admin/monitor web server (plain HTTP only)
+	admin_http = false					# Whether to enable the plain HTTP interface
+	admin_port = 7088					# Admin/monitor web server HTTP port
+	admin_https = false					# Whether to enable HTTPS (default=false)
+}
+cors: {
+	allow_origin = "http://PUBLIC_IP_ADDRESS:CONTAINER_PORT"
+}
+certificates: {
+	cert_pem = "/etc/ssl/certs/ssl-cert-snakeoil.pem"
+	cert_key = "/etc/ssl/private/ssl-cert-snakeoil.key"
+}

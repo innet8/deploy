@@ -1,5 +1,5 @@
 # 安装
-*必须将本项目部署在 /www/deploy 文件*
+*必须将本项目部署在远程主机的 /www/deploy 文件夹*
 ## 运行 ./install 安装配置工具
 ## 运行 docker-compose up -d 运行本项目
 

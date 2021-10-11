@@ -9,8 +9,6 @@ services:
       - "./:/deploy:rw"
       - "/etc/dnsmasq.d/:/ipset:rw"
     restart: unless-stopped
-    networks:
-      extnetwork:
   nginx:
     container_name: "nginx-desktop"
     hostname: nginx-desktop
@@ -24,15 +22,5 @@ services:
       - "./nginx/conf/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf"
       - "./nginx/conf/conf.d:/etc/nginx/conf.d"
       - "./nginx/lua:/usr/local/openresty/nginx/lua"
-    networks:
-      extnetwork:
-        ipv4_address: 172.111.11.24
+      - "./logs:/var/log"
     restart: unless-stopped
-  
-networks:
-  extnetwork:
-    name: "M-desktop-network"
-    ipam:
-      config:
-        - subnet: 172.111.11.0/16
-          gateway: 172.111.11.1

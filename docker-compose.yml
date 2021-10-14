@@ -8,6 +8,9 @@ services:
     volumes:
       - "./:/deploy:rw"
       - "/etc/dnsmasq.d/:/ipset:rw"
+    networks:
+      desktopwork:
+        ipv4_address: 172.111.11.5
     restart: unless-stopped
   nginx:
     container_name: "nginx-desktop"
@@ -23,4 +26,15 @@ services:
       - "./nginx/conf/conf.d:/etc/nginx/conf.d"
       - "./nginx/lua:/usr/local/openresty/nginx/lua"
       - "./logs:/var/log"
+    networks:
+      desktopwork:
+        ipv4_address: 172.111.11.6
     restart: unless-stopped
+
+networks:
+  desktopwork:
+    name: "M-desktop-network"
+    ipam:
+      config:
+        - subnet: 172.111.0.0/16
+          gateway: 172.111.11.1
